@@ -1,7 +1,7 @@
 # taxes
 # TAX_RATE
 
-CALI_TAX_RATE = 0.13
+TAX_RATE = 0.13
 RATE_OF_DEDUCTION = 2000
 
 def calculate_tax(tax_rate):
@@ -14,19 +14,25 @@ def calculate_tax(tax_rate):
     # calculate tax subtotal
     tax_subtotal = tax_bill - dependent_deduction
 
-# get dependents
-num_of_dependents = float(input('Please enter the number of dependents: '))
+    return tax_subtotal
 
-# get gross income 
-gross_income = float(input('Please enter the gross income: '))
+while (True):
+    # get dependents
+    num_of_dependents = float(input('Please enter the number of dependents: '))
 
-# get state
-state_code = input('Please enter your two digit state code: ')
+    # get gross income 
+    gross_income = float(input('Please enter the gross income: '))
 
-if(state_code == 'CA'):
-    # print tax subtotal
-    print(f'Your final tax bill is ${calculate_tax(0.13)}')
-else:
-    print(f'Your state does not have an income tax, time to plan a vacation')
+    # get state
+    state_code = input('Please enter your two digit state code: ')
 
-# calculate tax home
+    if(state_code == 'CA'):
+        # print tax subtotal
+        print(f'Your final tax bill is ${calculate_tax(TAX_RATE)}')
+    else:
+        print(f'Your state does not have an income tax, time to plan a vacation')
+
+    stop = input('Do you want to continue? y or n: ')
+    if (stop == 'n'):
+        print('Go pound sand!')
+        break
