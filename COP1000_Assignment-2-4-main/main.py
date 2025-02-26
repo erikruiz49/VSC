@@ -1,4 +1,4 @@
-# tax
+# tax values
 STATE_TAX = 0.065
 FEDERAL_TAX = 0.28
 EMP_SALARY = 0.025
