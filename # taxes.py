@@ -30,6 +30,8 @@ while (True):
     if(state_code == 'CA'):
         # print tax subtotal
         print(f'Your final tax bill is ${calculate_tax(TAX_RATE)}')
+    if(state_code == 'NY'):
+        print(f'your final ttax bill is ${calculate_tax(0.04)}')
     else:
         print(f'Your state does not have an income tax, time to plan a vacation')
 
