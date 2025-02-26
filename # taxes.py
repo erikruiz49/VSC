@@ -16,6 +16,7 @@ def calculate_tax(tax_rate):
 
     return tax_subtotal
 
+#loop
 while (True):
     # get dependents
     num_of_dependents = float(input('Please enter the number of dependents: '))
