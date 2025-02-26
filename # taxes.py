@@ -12,7 +12,7 @@ def calculate_tax(tax_rate):
     dependent_deduction = RATE_OF_DEDUCTION * num_of_dependents 
 
     # calculate tax subtotal
-    tax_subtotal = tax_bill - dependent_deduction
+    tax_subtotal = dependent_deduction - tax_bill
 
     return tax_subtotal
 
