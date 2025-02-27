@@ -1,8 +1,12 @@
 #Function: This program determines if a student will be admitted or rejected.
 #Input:  Interactive
+testScore = input('Pls, enter your test score: ')
+classRank = input('Pls, enter your class rank: ')
 #Output: Accept or Reject
 
 # Get input and convert to correct data type for testScore and classRank
+
+
 
 # Test using admission requirements and print Accept or Reject
 if testScore >= 90:
