@@ -1,15 +1,9 @@
-#Function: This program determines if a student will be admitted or rejected.
-
-#Input:  Interactive
-
-#Output: Accept or Reject
-
-# Get input and convert to correct data type for testScore and classRank
-
+#funtion that allow me to reject everything but numbers
 def numtest(x):
   if (not x.isnumeric()):
     return(True)
 
+#input the need info, and run the program numtest
 while(True):
   testScoreStr = input('Pls, enter your test score: ')
   
@@ -24,11 +18,11 @@ while(True):
     print('Class rank is not valid, try again')
   else:break
 
+#combert the values to int 
 testScore = int(testScoreStr)
 classRank = int(classRankStr)
 
-# Test using admission requirements and print Accept or Reject
-
+#outputs
 if testScore >= 90:
   if classRank >= 25:
     print("Accept")
