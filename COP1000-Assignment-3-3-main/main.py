@@ -9,9 +9,9 @@ MAX_MONTH = 12
 MIN_DAY = 1
 MAX_DAY = 31
 
-year = None
-month = None
-day = None
+year = input('Pls, enter the year: ')
+month = input('Pls, enter the month: ')
+day = input('Pls, enter the day: ')
 
 # Get the year, then the month, then the day
 # housekeeping()
@@ -26,6 +26,8 @@ elif int(day) < MIN_DAY or int(day) > MAX_DAY: # invalid day
     validDate = False
 
 # Test to see if date is valid and output date and whether it is valid or not
+if validDate == False:
+    print(f'{month}/{day}/{year} is an invalid day')
 
 # endOfJob()
 if validDate == True:
