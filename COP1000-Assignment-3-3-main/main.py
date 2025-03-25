@@ -6,13 +6,6 @@ def numtest(x):
 # Input:        Interactive
 
 while(True):
-    year = input('Pls, enter a year: ')
-
-    if numtest(year) == True:
-        print(f'{year} is not valid')
-    else:break
-
-while(True):
     month = input('Pls, enter a month: ')
 
     if numtest(month) == True:
@@ -25,6 +18,14 @@ while(True):
     if numtest(day) == True:
         print(f'{day} is not valid')
     else:break
+
+while(True):
+    year = input('Pls, enter a year: ')
+
+    if numtest(year) == True:
+        print(f'{year} is not valid')
+    else:break
+
 
 # Output:       Valid date is printed or user is alerted that an invalid date was entered.
 
