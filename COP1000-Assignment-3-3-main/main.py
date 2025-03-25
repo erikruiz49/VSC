@@ -1,33 +1,29 @@
 # Function:     This program determines if a date entered by the user is valid.  
 def numtest(x):
     if(not x.isnumeric()):
-        while(True):
-            if x == True:
-                print(f'{x} is not valid, pls try again')
-            else:break
         return True
 
 # Input:        Interactive
 
 while(True):
-    year = input('Pls, enter the year: ')
+    year = input('Pls, enter a year: ')
 
     if numtest(year) == True:
-        print(f'{year} is not a valid year, pls try again')
+        print(f'{year} is not valid')
     else:break
 
 while(True):
-    month = input('Pls, enter the month: ')
-    
+    month = input('Pls, enter a month: ')
+
     if numtest(month) == True:
-        print(f'{month} is not a valid month, pls try again')
+        print(f'{month} is not valid')
     else:break
 
 while(True):
-    day = input('Pls, enter the day: ')
-    
+    day = input('Pls, enter a day: ')
+
     if numtest(day) == True:
-        print(f'{day} is not a valid day, pls try again')
+        print(f'{day} is not valid')
     else:break
 
 # Output:       Valid date is printed or user is alerted that an invalid date was entered.
