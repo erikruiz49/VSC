@@ -2,11 +2,19 @@
 # Declare and initialize variables here.
 def numtest(input):
     if(not input.isnumeric()):
-        return True
-    return False
+        return False
+
+def listCheck(input, list):
+    for x in list: 
+        if x == input:
+            return True
+        elif x != input:
+            continue
+
+
 
 WOODS = ['oak', 'pine']
-
+COLORS = ['black','whith','gold']
 
 
 # Charge for this sign.
@@ -14,7 +22,7 @@ CHARGE = 35.00
 # Number of characters.
 while(True):
     numChars = input('Pls enter the number of characters you want: ')
-    if numtest(numChars) == True:
+    if numtest(numChars) == False:
         print(f'{numChars} is not a number, pls try again')
     else:break
 
@@ -29,22 +37,10 @@ else:
 # Type of wood.
 while(True):
     woodType = input('Pls enter the wood type you want: ')
-    for x in WOODS: 
-        if x == woodType:
-            exit = True
-            break
-        elif x != woodType:
-            exit = False
-            continue
-    else:
-        print(f'{woodType} is not valid, pls try again')
-    if exit== True:
+    if listCheck(woodType, WOODS) == True:
         break
     else:
-        continue
-
-
-
+        print(f'{woodType} is not valid, pls try again')
 
 if woodType == 'oak':
     chargeWood = 20
@@ -53,11 +49,17 @@ elif woodType == 'pine':
 
 
 # Color of characters.
-color = input('Pls enter the the color you want: ')
+while(True):
+    color = input('Pls enter the the color you want: ')
+    if listCheck(color, COLORS) == True:
+        break
+    else:
+        print(f'{color} is not valid, pls try again')
+
 
 if color == 'gold':
     chargeColor = 15
-else:
+elif color == 'white' or color == 'black':
     chargeColor = 0
 
 # Write assignment and if statements here as appropriate.
