@@ -3,15 +3,14 @@
 def numtest(input):
     if(not input.isnumeric()):
         return True
-    else:
-        return False
+    return False
 
-
+WOODS = ['oak', 'pine']
 
 
 
 # Charge for this sign.
-charge = 35.00
+CHARGE = 35.00
 # Number of characters.
 while(True):
     numChars = input('Pls enter the number of characters you want: ')
@@ -30,14 +29,26 @@ else:
 # Type of wood.
 while(True):
     woodType = input('Pls enter the wood type you want: ')
-    if numtest(woodType) == False:
+    for x in WOODS: 
+        if x == woodType:
+            exit = True
+            break
+        elif x != woodType:
+            exit = False
+            continue
+    else:
         print(f'{woodType} is not valid, pls try again')
-    else:break
+    if exit== True:
+        break
+    else:
+        continue
+
+
 
 
 if woodType == 'oak':
     chargeWood = 20
-else:
+elif woodType == 'pine':
     chargeWood = 0
 
 
@@ -51,7 +62,7 @@ else:
 
 # Write assignment and if statements here as appropriate.
 
-charge = charge + chargeChars + chargeColor + chargeWood
+charge = CHARGE + chargeChars + chargeColor + chargeWood
 
 # Output Charge for this sign.
 print("The charge for this sign is $" + str(charge))

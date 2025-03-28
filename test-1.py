@@ -1,12 +1,25 @@
-#funtion
-def checkInput(x):
-    if(not x.isnumeric()):
-        return (f'{x} is not a numerical value')
-    if(int(x) > 10 or int(x) < 1):
-        return (f'{x} is not a valid number')
-    return (f'The number is {x}')
+WOODS = ['oak', 'pine']
 
-#input
-response = input('pls, enter a number between 1 and 10: ')
+def count(start, end):
+    while start:
+        if input != woodType:  
+            return True
 
-print(checkInput(response))
+woodType = input('Pls enter the wood type you want: ')
+
+#for x in WOODS:
+#    if count(x) != True:
+#        print((f'{woodType} is not valid, pls try again'))
+
+for x in WOODS: 
+    if x == woodType:
+        break
+    elif x != woodType:
+        continue
+else:
+    noValue = True
+               
+if noValue == True:
+    print('no hay na')
+else:
+    print(woodType)
