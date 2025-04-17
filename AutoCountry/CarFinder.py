@@ -1,14 +1,9 @@
 #funtions
-def listCheck(list):
-    #Happy path output
-    print('The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ')
-    for i in list:
-        print(i)
 
 def inputCheck(input):
     if not input.isnumeric():
         return True
-    if int(input) < 1 or int(input) > 3:
+    if int(input) < 1 or int(input) > 4:
         return True
 
 def search(input, list):
@@ -17,11 +12,12 @@ def search(input, list):
     else:
         print(f'{input} is not an authorized vehicle, if you received this in error please check the spelling and try again''\n')
 
-#list
-AllowedVehiclesList = ['Ford f-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan']
-
 #menu
 while(True):
+    #call the database 
+    with open('AutoCountry/DataBase.txt', 'r') as db:
+        AllowedVehiclesList = db.read()
+    #menu
     print('********************************''\n'
           'AutoCountry Vehicle Finder v0.2''\n'
           '********************************''\n'
@@ -29,7 +25,8 @@ while(True):
           ' ''\n'
           '1. PRINT all Authorized Vehicles''\n'
           '2. SEARCH for Authorized Vehicles''\n'
-          '3. Exit''\n'
+          '3. ADD Authorized Vehicle''\n'
+          '4. Exit''\n'
           )
     #input
     response = input('Your number is: ')
@@ -43,16 +40,22 @@ while(True):
 
     #obtion 1
     if response == 1:
-        listCheck(AllowedVehiclesList)
-        print('')
+        print('The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ')
+        print(AllowedVehiclesList)
 
     #obtion 2
     if response == 2:
         carPick = input('Please Enter the full Vehicle name: ')
         search(carPick, AllowedVehiclesList)
 
+    #obtion 3
+    if response == 3:
+        addNewValue = input('Please Enter the full Vehicle name you would like to add: ')
+        with open('AutoCountry/DataBase.txt', 'a') as db: 
+            db.write(f'{addNewValue}''\n')
+        print(f'You have added "{addNewValue}" as an authorized vehicle''\n')
 
-    if int(response) == 3:
+    if int(response) == 4:
         break
     
 
