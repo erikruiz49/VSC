@@ -6,46 +6,26 @@ def inputCheck(input):
         return True
 
 def search(input, list):
-    if list.__contains__(input):
+    if input in list:
         print(f'{input} is an authorized vehicle''\n')
     else:
         print(f'{input} is not an authorized vehicle, if you received this in error please check the spelling and try again''\n')
 
 #list
-AllowedVehiclesList = [{
-        'make': 'Ford',
-        'model': 'f-150'
-    }, {
-        'make': 'Chevrolet',
-        'model': 'Silverado'
-    }, {
-        'make': 'Tesla',
-        'model': 'CyberTruck'
-    }, {
-        'make': 'Toyota',
-        'model': 'Tundra'
-    }, {
-        'make': 'Nissan',
-        'model': 'Titan'
-    }, {
-        'make': 'Rivian',
-        'model': 'R1T'
-    }, {
-        'make': 'Ram',
-        'model': '1500'
-    }]
-with open('AutoCountry/DataBase.txt', 'w') as db:
-    for x in AllowedVehiclesList:
-        db.write(f'{x['make']},{x['model']}\n')
 
+with open('AutoCountry/DataBase.txt', 'r') as db:
+    AllowedVehiclesListdb = [line.strip() for line in db.readlines()]
 #menu
 while(True):
     #call the database 
-    with open('AutoCountry/DataBase.txt', 'r') as db:
-        AllowedVehiclesListdb = db.read()
+    with open('AutoCountry/DataBase.txt', 'w') as db:
+        for vehicule in AllowedVehiclesListdb:
+            db.write(vehicule + '\n')
+
+
     #menu
     print('********************************''\n'
-          'AutoCountry Vehicle Finder v0.3''\n'
+          'AutoCountry Vehicle Finder v0.4''\n'
           '********************************''\n'
           'Please Enter the following number below from the following menu: ''\n'
           ' ''\n'
@@ -68,7 +48,8 @@ while(True):
     #obtion 1
     if response == 1:
         print('The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ')
-        print(AllowedVehiclesListdb)
+        for vehicule in AllowedVehiclesListdb:
+            print(vehicule)
 
     #obtion 2
     if response == 2:
@@ -81,16 +62,21 @@ while(True):
         #with open('AutoCountry/DataBase.txt', 'a') as db: 
         #    db.write(f'{addNewValue}''\n')
 
-        AllowedVehiclesList.append(addNewValue)
+        AllowedVehiclesListdb.append(addNewValue)
         print(f'You have added "{addNewValue}" as an authorized vehicle''\n')
         
     
     #obtion 4
     if response == 4:
         removeValue = input('Please Enter the full Vehicle name you would like to REMOVE: ')
-        for i in AllowedVehiclesList:
-            print([i])
+        verification = input(f'Are you sure you want to remove "{removeValue}" from the Authorized Vehicles List?\n')
+        if verification.lower() == 'yes':
+            AllowedVehiclesListdb.remove(removeValue)
+        else:
+            continue
 
+
+    #obtion 5
     if int(response) == 5:
         break
     
