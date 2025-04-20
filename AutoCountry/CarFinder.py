@@ -1,9 +1,8 @@
 #funtions
-
 def inputCheck(input):
     if not input.isnumeric():
         return True
-    if int(input) < 1 or int(input) > 4:
+    if int(input) < 1 or int(input) > 5:
         return True
 
 def search(input, list):
@@ -12,21 +11,49 @@ def search(input, list):
     else:
         print(f'{input} is not an authorized vehicle, if you received this in error please check the spelling and try again''\n')
 
+#list
+AllowedVehiclesList = [{
+        'make': 'Ford',
+        'model': 'f-150'
+    }, {
+        'make': 'Chevrolet',
+        'model': 'Silverado'
+    }, {
+        'make': 'Tesla',
+        'model': 'CyberTruck'
+    }, {
+        'make': 'Toyota',
+        'model': 'Tundra'
+    }, {
+        'make': 'Nissan',
+        'model': 'Titan'
+    }, {
+        'make': 'Rivian',
+        'model': 'R1T'
+    }, {
+        'make': 'Ram',
+        'model': '1500'
+    }]
+with open('AutoCountry/DataBase.txt', 'w') as db:
+    for x in AllowedVehiclesList:
+        db.write(f'{x['make']},{x['model']}\n')
+
 #menu
 while(True):
     #call the database 
     with open('AutoCountry/DataBase.txt', 'r') as db:
-        AllowedVehiclesList = db.read()
+        AllowedVehiclesListdb = db.read()
     #menu
     print('********************************''\n'
-          'AutoCountry Vehicle Finder v0.2''\n'
+          'AutoCountry Vehicle Finder v0.3''\n'
           '********************************''\n'
           'Please Enter the following number below from the following menu: ''\n'
           ' ''\n'
           '1. PRINT all Authorized Vehicles''\n'
           '2. SEARCH for Authorized Vehicles''\n'
           '3. ADD Authorized Vehicle''\n'
-          '4. Exit''\n'
+          '4. DELETE Authorized Vehicle''\n'
+          '5. Exit''\n'
           )
     #input
     response = input('Your number is: ')
@@ -41,21 +68,30 @@ while(True):
     #obtion 1
     if response == 1:
         print('The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ')
-        print(AllowedVehiclesList)
+        print(AllowedVehiclesListdb)
 
     #obtion 2
     if response == 2:
         carPick = input('Please Enter the full Vehicle name: ')
-        search(carPick, AllowedVehiclesList)
+        search(carPick, AllowedVehiclesListdb)
 
     #obtion 3
     if response == 3:
         addNewValue = input('Please Enter the full Vehicle name you would like to add: ')
-        with open('AutoCountry/DataBase.txt', 'a') as db: 
-            db.write(f'{addNewValue}''\n')
-        print(f'You have added "{addNewValue}" as an authorized vehicle''\n')
+        #with open('AutoCountry/DataBase.txt', 'a') as db: 
+        #    db.write(f'{addNewValue}''\n')
 
-    if int(response) == 4:
+        AllowedVehiclesList.append(addNewValue)
+        print(f'You have added "{addNewValue}" as an authorized vehicle''\n')
+        
+    
+    #obtion 4
+    if response == 4:
+        removeValue = input('Please Enter the full Vehicle name you would like to REMOVE: ')
+        for i in AllowedVehiclesList:
+            print([i])
+
+    if int(response) == 5:
         break
     
 

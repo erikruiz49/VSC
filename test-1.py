@@ -1,12 +1,25 @@
-#list = ['bike','cars']
-#
-#decition = input('bike or cars? ')
-#if list.__contains__(decition):
-#    print('great')
-#else:
-#    print('no bueno', '\n' 'caca')
-
-db = ['pepe', 'manolo', 'roberto']
-
-response = db.read()
-print(response)
+AllowedVehiclesList = [{
+        'make': 'Ford',
+        'model': 'f-150'
+    }, {
+        'make': 'Chevrolet',
+        'model': 'Silverado'
+    }, {
+        'make': 'Tesla',
+        'model': 'CyberTruck'
+    }, {
+        'make': 'Toyota',
+        'model': 'Tundra'
+    }, {
+        'make': 'Nissan',
+        'model': 'Titan'
+    }, {
+        'make': 'Rivian',
+        'model': 'R1T'
+    }, {
+        'make': 'Ram',
+        'model': '1500'
+    }]
+with open('testdb.txt', 'w') as db:
+    for x in AllowedVehiclesList:
+        db.write(f'{x['make']},{x['model']}\n')
