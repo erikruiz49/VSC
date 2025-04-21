@@ -11,6 +11,16 @@ def search(input, list):
     else:
         print(f'{input} is not an authorized vehicle, if you received this in error please check the spelling and try again''\n')
 
+def verification_funtion(input, list):
+    if input not in list:
+        print(f'{input} is not in the Authorized Vehicles, please try again\n')
+        return True
+
+def delete(check, input, list):
+    if check.lower() == 'yes':
+        list.remove(input)
+
+
 #list
 
 with open('AutoCountry/DataBase.txt', 'r') as db:
@@ -25,7 +35,7 @@ while(True):
 
     #menu
     print('********************************''\n'
-          'AutoCountry Vehicle Finder v0.4''\n'
+          'AutoCountry Vehicle Finder v0.6''\n'
           '********************************''\n'
           'Please Enter the following number below from the following menu: ''\n'
           ' ''\n'
@@ -41,7 +51,7 @@ while(True):
     
     #check if the value is correct 
     if inputCheck(response) == True:
-        print('The enter value is not a valid number, please try again')
+        print(f'{response} is not a valid, please try again\n')
         continue
         
     response = int(response)
@@ -51,6 +61,7 @@ while(True):
         print('The AutoCountry sales manager has authorized the purchase and selling of the following vehicles: ')
         for vehicule in AllowedVehiclesListdb:
             print(vehicule)
+        print('')
 
     #obtion 2
     if response == 2:
@@ -67,14 +78,12 @@ while(True):
     #obtion 4
     if response == 4:
         removeValue = input('Please Enter the full Vehicle name you would like to REMOVE: ')
-        if removeValue not in AllowedVehiclesListdb:
-            print(f'{removeValue} is not in the Authorized Vehicles, please try again')
+        if verification_funtion(removeValue, AllowedVehiclesListdb) == True:
             continue
+
         verification = input(f'Are you sure you want to remove "{removeValue}" from the Authorized Vehicles List?\n')
-        if verification.lower() == 'yes':
-            AllowedVehiclesListdb.remove(removeValue)
-        else:
-            continue
+        delete(verification, removeValue, AllowedVehiclesListdb)
+        print('')
 
 
     #obtion 5
