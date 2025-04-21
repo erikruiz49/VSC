@@ -59,9 +59,6 @@ while(True):
     #obtion 3
     if response == 3:
         addNewValue = input('Please Enter the full Vehicle name you would like to add: ')
-        #with open('AutoCountry/DataBase.txt', 'a') as db: 
-        #    db.write(f'{addNewValue}''\n')
-
         AllowedVehiclesListdb.append(addNewValue)
         print(f'You have added "{addNewValue}" as an authorized vehicle''\n')
         
@@ -69,6 +66,9 @@ while(True):
     #obtion 4
     if response == 4:
         removeValue = input('Please Enter the full Vehicle name you would like to REMOVE: ')
+        if removeValue not in AllowedVehiclesListdb:
+            print(f'{removeValue} is not in the Authorized Vehicles, please try again')
+            continue
         verification = input(f'Are you sure you want to remove "{removeValue}" from the Authorized Vehicles List?\n')
         if verification.lower() == 'yes':
             AllowedVehiclesListdb.remove(removeValue)
