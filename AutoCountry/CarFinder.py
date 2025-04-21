@@ -34,6 +34,7 @@ while(True):
           '3. ADD Authorized Vehicle''\n'
           '4. DELETE Authorized Vehicle''\n'
           '5. Exit''\n'
+          '********************************''\n'
           )
     #input
     response = input('Your number is: ')
